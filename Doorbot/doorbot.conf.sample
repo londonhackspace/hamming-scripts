@@ -1,0 +1,28 @@
+[doorbot]
+#logfile = /tmp/doorbot.log
+logfacility = daemon
+cardfile = /run/shm/carddb.json
+#announcer = Proxy
+announcer = Nothing
+relay = NothingRelay
+open_duration = 2
+#relay = KMtronic
+
+[Broadcast]
+port = 50000
+
+[Nothing]
+
+#[Proxy]
+#host = hack.rs
+#host = 46.65.36.25
+#port = 50001
+
+#[Arduino]
+#port = /dev/ttyUSB0
+
+#[KMtronic]
+#port = /dev/ttyUSB0
+
+[NothingRelay]
+port = /dev/null

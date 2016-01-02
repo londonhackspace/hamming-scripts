@@ -1,0 +1,62 @@
+import select, socket
+
+class DoorbotListener():
+
+    def bcast_socket(self, port):
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        s.bind(('<broadcast>', port))
+        s.setblocking(0)
+        return s
+
+    def listen(self, ports=(50000, 50002), sources = { '172.31.24.248' : 'back', '172.31.24.246' : 'front' } ):
+
+        socks = []
+        for p in ports:
+            socks.append(self.bcast_socket(p))
+
+        while True:
+
+            try:
+                result = select.select(socks,[],[])
+                (payload, address) = result[0][0].recvfrom(1024)
+                source = sources[address]
+                print source
+                (event, serial, name) = payload.split("\n")
+
+                if (event == 'RFID' and name):
+                    self.doorOpened(serial, name)
+
+                elif (event == 'RFID' and not name):
+                    self.unknownCard(serial)
+
+                elif (event == 'BELL'):
+                    self.doorbell()
+
+                elif (event == 'START'):
+                    self.startup()
+
+		#for triggering sounds, the "serial" field is just the name of a .wav file
+		elif (event == "TRIGGER"):
+	            self.trigger(serial)
+
+            except Exception, e:
+                pass
+
+
+    def doorOpened(self, serial, name):
+        pass
+
+    def unknownCard(self, serial):
+        pass
+
+    def doorbell(self):
+        pass
+
+    def startup(self):
+        pass
+
+    def trigger(self, serial):
+        pass
+

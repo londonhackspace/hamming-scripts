@@ -1,0 +1,210 @@
+
+todo:
+
+check that i have bolts + nuts!
+	needs to be +8mm, maybe 12? 16?
+	32 per digit?
+	32 * 8 == 256
+	or wedges? [wedges]
+
+librecad surround to work out wire lengths
+	mounting holes in corner peices [done]
+	wedges [done]
+	try to fit parts better [done]
+	test cut [done, needs diags]
+	
+
+Cut up strips, solder wires
+work out board layout + wires
+make a board
+test with cut segments
+design backing [done]
+laser cut backing
+shop for glue sticks
+
+2803: right hand pins arn't pairs
+com - can ignore it.
+
+4094:
+vdd: +5v
+Vss: gnd
+
+io con:
+
+
++5V		x
+GND		x
+strobe		x	a	b
+
+clock		x	a	b
+data		x		b
+data out
+output enable	x		
+
+1	gnd
+2	+5v
+3	oe		8
+4	gnd
+5	data out	
+6	strobe		9
+7	data in		11
+8	clock		10
+
+http://www.maximintegrated.com/app-notes/index.mvp/id/3212
+
+http://mbed.org/users/wim/code/mbed_starburst/
+
+smallest unit is 5cm
+
+lhs windows are 77 x 86cm
+
+4 x diagonals		18.4
+2 x horizontals		9
+2 x top and bottom	17.0
+4 x sides		16.
+2 x central bits	14
+
+height			32
+
+
+so height in window = 55, 10 segments, 
+
+			(segments)
+4 x diagonials		6 x 4	24
+2 x horizontals		3 x 2	6
+2 x top and bottom	7 x 2	14
+4 x sides		5 x 4	20
+2 x central bits	5 x 2	10
+				--
+	total per display	74
+			=	3.7m
+
+for 6 displays = 444 segments = 2220,
+for 9 displays = 666 segments = 3330,
+
+need to switch 14 * 9 segments == 126
+
+need 15.75 ULN2083's, so either chain different chars together or to 2 each,
+so 18, which would give us 4 extra outputs so maybe do 16 segment dislays
+with . as well.
+
+maybe look at fonts
+
+i2c io expanders?
+spi io expanders?
+
+a cheap mcu per char?
+
+driver boards:
+
+2 x darlington
+2 x shift
+3 x 8 way connector
+
+
+
+gnd
++5V
+clock
+data in
+data out
+strobe
+oe
+
+http://bobdasquirrel.blogspot.co.uk/2011/09/16-segment-led-from-active-surplus.html
+http://windways.org/personal_page/stockticker/
+
+
+#  
+#   a b
+#   _ _
+
+#  cdefg
+#  |\|/|
+
+#   h i
+#   - -
+
+#  jklmn
+#  |/|\|
+
+#   o p
+#   - -
+
+
+a 16
+b 5
+c 3
+d 14
+e 8
+f 2
+g 1
+h 9
+i 4
+j 13
+k 7
+l 15
+m 6
+n 11
+o 10
+p 12
+
+& is busted
+0b1110100110010111 $
+0b1110011001100111 0
+0b1100100000010001 1
+0b1110001110000111 6
+0b1110001111000111 8
+0b1110000111000111 9
+0b0001000000100000 <
+0b0000010000001000 >
+0b0000100101000011 ?
+0b0100100000010011 J
+0b0001000000001000 \
+
+0b1100 0011 0110 0111 @
+0b1010 1101 1011 0101 %
+0b1110 1100 0011 0010 &
+0b0100 1100 1000 0000 a
+0b1010 1001 0001 0000 b
+0b1000 1001 0000 0000 c
+0b0100 1010 1001 0000 d
+0b0100 0110 1000 0000 e
+0b0000 1001 1001 0010 f
+0b0100 1000 1001 0101 g
+0b0010 1001 0001 0000 h
+0b0000 1000 0000 0000 i
+0b0100 1000 0001 0000 j
+0b0001 1001 0001 0000 k
+0b1000 1000 0001 0000 l
+0b0010 1011 1000 0000 m
+0b0000 1010 1000 0000 n
+0b0100 1010 1000 0000 o
+0b0000 1001 0101 0010 p
+0b0000 1000 1001 0101 q
+0b0000 0010 1000 0000 r
+0b1001 0001 0000 0000 s
+0b1000 1001 1001 0000 t
+0b1010 1000 0000 0000 u
+0b0000 0110 0000 0000 v
+0b0011 0110 0000 0000 w
+0b0000 1100 0011 0000 x
+0b0000 1000 0010 1000 y
+0b0100 0100 1000 0000 z
+0b1000 1000 1001 0010 {
+0b0100 1001 0001 0001 }
+0b0000 0001 0101 0101 ~
+
+abcd efgh ijkl mnop
+0123 4567 8911 1111
+            01 2345
+
+  ponm lkji hgfe dcba
+  1111 11
+  5432 1098 7654 3210
+0b0000 1000 0010 1000 Y
+0b0000 0100 0010 1000 y
+0b0000 1001 0101 0010 p
+0b0000 0010 1001 0101 p
+0b1000 1000 0001 0000 l
+0b0100 0010 0000 0100 l

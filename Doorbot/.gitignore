@@ -1,0 +1,7 @@
+*.pyc
+cardtable.dat
+*~
+listeners/glados-wavefiles/*
+listeners/doorbot-listener.conf
+carddb.json
+doorbot.conf

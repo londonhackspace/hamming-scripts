@@ -1,0 +1,36 @@
+[program:doorbot-irccat-back]
+command=python -u /root/Doorbot/listeners/doorbot-irccat.py -d back
+directory=/root/Doorbot/listeners
+autorestart=true
+startretries=1000
+
+[program:doorbot-irccat-front]
+command=python -u /root/Doorbot/listeners/doorbot-irccat.py -d front
+directory=/root/Doorbot/listeners
+autorestart=true
+startretries=1000
+
+[program:doorbot-boarded-back]
+command=python -u /root/Doorbot/listeners/doorbot-boarded.py
+directory=/root/Doorbot/listeners
+autorestart=true
+startretries=1000
+
+[program:doorbot-boarded-front]
+command=python -u /root/Doorbot/listeners/doorbot-front-boarded.py
+directory=/root/Doorbot/listeners
+autorestart=true
+startretries=1000
+
+[program:doorbot-lastseen-back]
+command=python -u /root/Doorbot/listeners/doorbot-lastseen.py
+directory=/root/Doorbot/listeners
+autorestart=true
+startretries=1000
+
+[program:doorbot-lastseen-front]
+command=python -u /root/Doorbot/listeners/doorbot-front-lastseen.py
+directory=/root/Doorbot/listeners
+autorestart=true
+startretries=1000
+

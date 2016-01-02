@@ -1,0 +1,20 @@
+[boarded]
+tcpport = 8022
+logfile = /tmp/boarded-16.log
+type = SixteenBoard
+#type = InfotecBoard
+
+[InfotecBoard]
+serialport = /dev/ttyS1
+
+#
+# now has a udev rule in
+# /etc/udev/rules.d/00-board.rules
+#
+# SUBSYSTEMS=="usb", ATTRS{serial}=="A500COB8", KERNEL=="ttyUSB*", SYMLINK+="displayboard"
+#
+[NotifyBoard]
+serialport = /dev/null
+
+[SixteenBoard]
+serialport = /dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_74137363737351B0F0D1-if00
